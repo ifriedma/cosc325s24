@@ -87,7 +87,7 @@ def p_actual_statement(p):
     p[0] = (p[1], p[2])  # Tuple of line number and the statement
 
 def p_statement(p):
-    '''statement : print_statement
+    '''statement : print_statement 
                  | input_statement
                  | if_statement
                  | goto_statement
@@ -213,10 +213,11 @@ def p_error(p):
 
 import ply.lex as lex
 lexer = lex.lex()
-thesourcecode = open("examplecode/tbi/hexdump.tb", "r")
+thesourcecode = open("examplecode/tbi/random.tb", "r")
 import ply.yacc as yacc 
 parser = yacc.yacc()
 program = parser.parse(thesourcecode.read())
-print(program)
+for tuple in program:
+    print(tuple)
 
 myast.run_program(program)

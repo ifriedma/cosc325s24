@@ -67,7 +67,7 @@ class InputStatement(ASTNode):
     def execute(self):
         global symbol_table
         for var in self.varlist.variables:
-            symbol_table[var] = input(f"Enter value for {var}: ")
+            symbol_table[var] = int(input(f"Enter value for {var}: "))
 
 class LetStatement(ASTNode):
     def __init__(self, variable, expression):
@@ -205,7 +205,7 @@ class FunctionCall(ASTNode):
             return random.randint(0, self.args.evaluate()[0])
         elif self.function_name == 'USR':
             # Implementation depends on what USR is supposed to do
-            pass
+            return 0
 
 def run_program(program):
     control_flow.load_program(program)
